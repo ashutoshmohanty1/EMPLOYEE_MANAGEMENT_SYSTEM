@@ -35,6 +35,39 @@ export default function Features() {
             }}
         >
 
+            {/* Purple Glow - Top Left */}
+            <div
+                className="position-absolute"
+                style={{
+                    width: "550px",
+                    height: "550px",
+                    top: "-250px",
+                    left: "-150px",
+                    background:
+                        "radial-gradient(circle, rgba(124,58,237,0.55), transparent 70%)",
+                    filter: "blur(40px)",
+                    zIndex: 0,
+                    pointerEvents: "none"
+                }}
+            ></div>
+
+
+            {/* Purple Glow - Bottom Right */}
+            <div
+                className="position-absolute"
+                style={{
+                    width: "600px",
+                    height: "600px",
+                    bottom: "-300px",
+                    right: "-150px",
+                    background:
+                        "radial-gradient(circle, rgba(139,92,246,0.50), transparent 70%)",
+                    filter: "blur(40px)",
+                    zIndex: 0,
+                    pointerEvents: "none"
+                }}
+            ></div>
+
 
             {/* Content */}
             <div
@@ -42,19 +75,27 @@ export default function Features() {
                 style={{ zIndex: 1 }}
             >
 
+                {/* Heading */}
                 <div className="text-center mb-5">
 
-                    <p className="text-uppercase fw-semibold text-white-50">
+                    <p className="text-uppercase fw-semibold text-white-50 mb-2">
                         Features
                     </p>
 
-                    <h2 className="display-5 fw-bold">
+                    <h2
+                        className="fw-bold"
+                        style={{
+                            fontSize: "clamp(2.2rem, 5vw, 4rem)"
+                        }}
+                    >
                         Everything you need
                     </h2>
 
                     <p
                         className="text-white-50 mx-auto mt-3"
-                        style={{ maxWidth: "650px" }}
+                        style={{
+                            maxWidth: "650px"
+                        }}
                     >
                         Manage your employees and daily operations
                         with simple and powerful tools.
@@ -63,11 +104,12 @@ export default function Features() {
                 </div>
 
 
+                {/* Cards */}
                 <div className="row g-4">
 
                     {features.map((feature, index) => (
                         <div
-                            className="col-md-6 col-lg-3"
+                            className="col-12 col-md-6 col-lg-3"
                             key={index}
                         >
 
@@ -76,7 +118,20 @@ export default function Features() {
                                 style={{
                                     background: "rgba(15, 10, 25, 0.60)",
                                     border: "1px solid rgba(255,255,255,0.16)",
-                                    backdropFilter: "blur(12px)"
+                                    backdropFilter: "blur(12px)",
+                                    transition: "all 0.3s ease"
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.transform =
+                                        "translateY(-8px)";
+                                    e.currentTarget.style.borderColor =
+                                        "rgba(168,85,247,0.7)";
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.transform =
+                                        "translateY(0)";
+                                    e.currentTarget.style.borderColor =
+                                        "rgba(255,255,255,0.16)";
                                 }}
                             >
 

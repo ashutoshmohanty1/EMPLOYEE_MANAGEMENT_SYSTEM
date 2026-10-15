@@ -4,6 +4,7 @@ import Hero from "../../component/Hero/Hero";
 import Features from "../../component/Features/Features";
 import About from "../../component/About/About";
 import CTA from "../../component/CTA/CTA";
+import Footer from "../../component/Footer/Footer";
 
 export default function Home() {
     return (
@@ -32,6 +33,8 @@ export default function Home() {
                 <About />
 
                 <CTA />
+
+                <Footer />
 
             </div>
 

@@ -45,18 +45,24 @@ export default function About() {
                 style={{ zIndex: 1 }}
             >
 
-                <div className="row align-items-center g-5">
+                <div className="row align-items-center g-4 g-lg-5">
 
-                    {/* LEFT */}
-                    <div className="col-lg-6">
+                    {/* LEFT CONTENT */}
+                    <div className="col-12 col-lg-6">
 
-                        <p className="text-uppercase fw-semibold text-white-50">
+                        <p className="text-uppercase fw-semibold text-white-50 mb-3">
                             About the System
                         </p>
 
-                        <h2 className="display-5 fw-bold">
+                        <h2
+                            className="fw-bold"
+                            style={{
+                                fontSize: "clamp(2.2rem, 5vw, 4rem)",
+                                lineHeight: "1.05"
+                            }}
+                        >
                             Everything your team needs,
-                            <br />
+                            <br className="d-none d-md-block" />
                             in one place.
                         </h2>
 
@@ -75,18 +81,32 @@ export default function About() {
                     </div>
 
 
-                    {/* RIGHT */}
-                    <div className="col-lg-6">
+                    {/* RIGHT GLASS CARD */}
+                    <div className="col-12 col-lg-6">
 
                         <div
                             className="p-4 p-md-5 rounded-4"
                             style={{
-                                background: "radial-gradient(circle at 80% 20%, #4c1d95 0%, transparent 45%), #0a0611c8",
+                                background: "rgba(15, 10, 25, 0.60)",
                                 border: "1px solid rgba(255,255,255,0.18)",
-                                backdropFilter: "blur(14px)"
+                                backdropFilter: "blur(14px)",
+                                transition: "all 0.3s ease"
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.transform =
+                                    "translateY(-6px)";
+                                e.currentTarget.style.borderColor =
+                                    "rgba(168,85,247,0.7)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.transform =
+                                    "translateY(0)";
+                                e.currentTarget.style.borderColor =
+                                    "rgba(255,255,255,0.18)";
                             }}
                         >
 
+                            {/* Item 1 */}
                             <div className="mb-4">
 
                                 <h4 className="fw-bold">
@@ -101,6 +121,7 @@ export default function About() {
                             </div>
 
 
+                            {/* Item 2 */}
                             <div className="mb-4">
 
                                 <h4 className="fw-bold">
@@ -115,6 +136,7 @@ export default function About() {
                             </div>
 
 
+                            {/* Item 3 */}
                             <div>
 
                                 <h4 className="fw-bold">
