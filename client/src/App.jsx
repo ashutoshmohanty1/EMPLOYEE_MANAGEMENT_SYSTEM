@@ -3,10 +3,12 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import HelpBot from "./component/HelpBot/HelpBot";
 
 export default function App() {
     return (
-        <Routes>
+        <>
+          <Routes>
 
             <Route path="/" element={<Home />} />
 
@@ -14,6 +16,9 @@ export default function App() {
 
             <Route path="/register" element={<Register />} />
 
-        </Routes>
+          </Routes>
+
+          <HelpBot />
+        </>
     );
 }
