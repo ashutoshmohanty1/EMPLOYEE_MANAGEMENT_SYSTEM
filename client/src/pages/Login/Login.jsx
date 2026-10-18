@@ -1,6 +1,44 @@
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const navigate = useNavigate();
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post(
+                "http://localhost:5000/api/auth/login",
+                {
+                    email,
+                    password
+                }
+            );
+
+            console.log(response.data);
+
+            localStorage.setItem("token", response.data.token);
+
+            alert("login Successful");
+
+            navigate("/");
+        } catch(error) {
+            console.error("Login Error: ", error);
+
+            if(error.response) {
+                alert(error.response.data.message);
+            } else {
+                alert("Unable to connect to server");
+            }
+        }
+    };
+
     return (
         <div
             className="min-vh-100 position-relative d-flex align-items-center justify-content-center overflow-hidden p-3"
@@ -94,7 +132,7 @@ export default function Login() {
 
 
                 {/* Form */}
-                <form>
+                <form onSubmit={handleLogin}>
 
                     {/* Email */}
                     <div className="mb-3">
@@ -123,6 +161,8 @@ export default function Login() {
                                 type="email"
                                 className="form-control form-control-lg text-white"
                                 placeholder="Enter your email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 style={{
                                     background: "rgba(255,255,255,0.06)",
                                     borderColor: "rgba(255,255,255,0.15)"
@@ -161,6 +201,8 @@ export default function Login() {
                                 type="password"
                                 className="form-control form-control-lg text-white"
                                 placeholder="Enter your password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 style={{
                                     background: "rgba(255,255,255,0.06)",
                                     borderColor: "rgba(255,255,255,0.15)"

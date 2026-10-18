@@ -1,6 +1,50 @@
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmpassword] = useState("");
+
+    const navigate = useNavigate();
+
+    const handleRegister = async (e) => {
+        e.preventDefault();
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match");
+            return;
+        }
+
+        try {
+            const response = await axios.post(
+                "http://localhost:5000/api/auth/register", 
+                {
+                    name,
+                    email,
+                    password
+                }
+            );
+
+            console.log(response.data);
+
+            alert("register Successful");
+
+            navigate("/login");
+        } catch(error) {
+            console.error("Register Error: ", error);
+
+            if(error.response) {
+                alert(error.response.data.message);
+            } else {
+                alert("Unable to connect to server");
+            }
+        }
+    }
+
     return (
         <div
             className="min-vh-100 position-relative d-flex align-items-center justify-content-center overflow-hidden p-3"
@@ -96,7 +140,7 @@ export default function Register() {
 
 
                 {/* Form */}
-                <form>
+                <form onSubmit={handleRegister}>
 
                     {/* Full Name */}
                     <div className="mb-3">
@@ -122,6 +166,8 @@ export default function Register() {
 
                             <input
                                 id="name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                                 type="text"
                                 className="form-control form-control-lg text-white"
                                 placeholder="Enter your full name"
@@ -160,6 +206,8 @@ export default function Register() {
 
                             <input
                                 id="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 type="email"
                                 className="form-control form-control-lg text-white"
                                 placeholder="Enter your email"
@@ -198,6 +246,8 @@ export default function Register() {
 
                             <input
                                 id="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 type="password"
                                 className="form-control form-control-lg text-white"
                                 placeholder="Create a password"
@@ -236,6 +286,8 @@ export default function Register() {
 
                             <input
                                 id="confirmPassword"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmpassword(e.target.value)}
                                 type="password"
                                 className="form-control form-control-lg text-white"
                                 placeholder="Confirm your password"
