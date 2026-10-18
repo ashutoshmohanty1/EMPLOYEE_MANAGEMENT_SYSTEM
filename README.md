@@ -2,6 +2,10 @@
 
 A full-stack Employee Management System built with React, Node.js, Express.js, and MySQL.
 
+This project is being developed as a complete full-stack application with authentication, employee management, role-based access, and other employee-related features.
+
+---
+
 ## 🚀 Tech Stack
 
 ### Frontend
@@ -10,6 +14,7 @@ A full-stack Employee Management System built with React, Node.js, Express.js, a
 - React Router
 - Bootstrap
 - Bootstrap Icons
+- Axios
 
 ### Backend
 
@@ -28,17 +33,75 @@ A full-stack Employee Management System built with React, Node.js, Express.js, a
 - Git
 - GitHub
 - Postman
+- VS Code
 
 ---
 
-## 📁 Project Structure
+## ✨ Current Features
+
+### Landing Page
+
+- Responsive Navbar
+- Hero Section
+- Features Section
+- About Section
+- Call-to-Action Section
+- Footer
+- Responsive Design
+- Help Button / Support UI
+
+### Authentication
+
+- User Registration
+- User Login
+- Email validation
+- Password validation
+- Confirm password validation
+- Password hashing using bcrypt
+- JWT authentication
+- JWT protected backend routes
+- Login error handling
+- Registration error handling
+- Frontend JWT storage
+- Logout functionality - planned
+
+### Backend
+
+- Express server
+- MySQL database connection
+- Authentication routes
+- Authentication controller
+- JWT authentication middleware
+- Protected API route
+- Environment variable configuration
+- CORS configuration
+- JSON request handling
+
+---
+
+## 🔐 Authentication Flow
+
+### Registration
 
 ```text
-EMS/
-│
-├── client/                 # React frontend
-│
-├── server/                 # Node.js + Express backend
-│
-├── .gitignore
-└── README.md
+Register Page
+     ↓
+React
+     ↓
+Axios
+     ↓
+POST /api/auth/register
+     ↓
+Express
+     ↓
+Validate User
+     ↓
+Check Existing Email
+     ↓
+bcrypt Password Hash
+     ↓
+MySQL
+     ↓
+Registration Successful
+     ↓
+Login Page
