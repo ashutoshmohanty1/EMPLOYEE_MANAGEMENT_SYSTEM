@@ -20,14 +20,13 @@ export default function Login() {
                     password
                 }
             );
-
-            console.log(response.data);
-
             localStorage.setItem("token", response.data.token);
-
-            alert("login Successful");
-
-            navigate("/");
+            localStorage.setItem(
+                "user",
+                JSON.stringify(response.data.user)
+            );
+            alert("Login Successful");
+            navigate("/dashboard");
         } catch(error) {
             console.error("Login Error: ", error);
 
